@@ -1,7 +1,0 @@
-FROM maven:3.6.1-jdk-12
-
-RUN mkdir /app
-ADD pom.xml /app/pom.xml
-ADD /src /app/src
-WORKDIR /app
-ENTRYPOINT ["mvn", "clean", "package"]
