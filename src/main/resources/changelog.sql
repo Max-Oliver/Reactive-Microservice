@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeSet je.gonzalez@globant.com:create_sites_table codeyourfuturedb:1
+--changeSet maximiliano.olivero@globant.com:create_sites_table codeyourfuturedb:1
 CREATE TABLE sites (
                        site_id BIGINT PRIMARY KEY,
                        url VARCHAR(255),
@@ -10,15 +10,15 @@ CREATE TABLE sites (
 );
 -- rollback DROP TABLE sites;
 
---changeSet je.gonzalez@globant.com:update_sites_with_updated_by
+--changeSet maximiliano.olivero@globant.com:update_sites_with_updated_by
 ALTER TABLE sites ADD COLUMN updated_by TEXT;
 --
 
---changeSet je.gonzalez@globant.com:create_hibernate_sequence
+--changeSet maximiliano.olivero@globant.com:create_hibernate_sequence
 CREATE SEQUENCE hibernate_sequence CYCLE;
 --
 
---changeSet je.gonzalez@globant.com:create_site_advanced_settings_table
+--changeSet maximiliano.olivero@globant.com:create_site_advanced_settings_table
 CREATE TABLE site_advanced_settings (
     settings_id BIGINT,
     site_id BIGINT,
@@ -27,17 +27,17 @@ CREATE TABLE site_advanced_settings (
 );
 
 
--- changeSet je.gonzalez@globant.com:add_site_advanced_settings_foreign_key
+-- changeSet maximiliano.olivero@globant.com:add_site_advanced_settings_foreign_key
 ALTER TABLE site_advanced_settings
 ADD CONSTRAINT site_advanced_settings_fk_sites FOREIGN KEY (site_id) REFERENCES sites(site_id);
 --
 
--- changeSet je.gonzalez@globant.com:add_site_advanced_settings_unique_key
+-- changeSet maximiliano.olivero@globant.com:add_site_advanced_settings_unique_key
 ALTER TABLE site_advanced_settings
 ADD CONSTRAINT site_advanced_settings_unique_sites UNIQUE (site_id);
 --
 
--- changeSet je.gonzalez@globant.com:add_vendors_table
+-- changeSet maximiliano.olivero@globant.com:add_vendors_table
 CREATE TABLE vendors(
     vendor_id BIGINT PRIMARY KEY,
     vendor_name VARCHAR(255) NOT NULL,
